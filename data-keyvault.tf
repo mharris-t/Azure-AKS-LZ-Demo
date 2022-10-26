@@ -1,6 +1,6 @@
 data "azurerm_key_vault" "keyvault" {
   name                = "lz-keyvault"
-  resource_group_name = "gov-keyvault"
+  resource_group_name = "governance_vault"
 }
 
 data "azurerm_key_vault_secret" "aks_ssh" {
