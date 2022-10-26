@@ -43,7 +43,7 @@ locals {
             availability_zones  = [1,2,3]
             enable_auto_scaling = true
             vnet_adress_space   = "10.0.0.0/8"
-            k8s_subnet          = "10.1.0.0/16"
+            k8s_subnet          = "10.3.0.0/16"
             nodepool_min_count  = 1
             nodepool_max_count  = 4
             nodepool_disk_size  = 100
