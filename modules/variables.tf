@@ -65,29 +65,7 @@ variable "vm_size" {
   default = "Standard_DS2_v2"
 }
 
-# Azure AKS Environment Name
-variable "environment" {
-  type = string  
-  description = "This variable defines the Environment"  
-  default = "dev"
-}
-
-# SSH Public Key for Linux VMs
 variable "ssh_public_key" {
   default = "~/.ssh/aks-prod-sshkeys-terraform/aksprodsshkey.pub"
   description = "SSH Public Key for Linux k8s Worker nodes"  
-}
-
-# Windows Admin Username for k8s worker nodes
-variable "windows_admin_username" {
-  type = string
-  default = "aksuser"
-  description = "Admin username for k8s Worker nodes"  
-}
-
-# Windows Admin Password for k8s worker nodes
-variable "windows_admin_password" {
-  type = string
-  default = "P@ssw0rd1234"
-  description = "This variable defines the Windows admin password k8s Worker nodes"  
 }

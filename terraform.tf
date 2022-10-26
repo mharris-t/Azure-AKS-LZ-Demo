@@ -22,3 +22,7 @@ terraform {
     key                   = "aks-env.tfstate"
   }
 }
+
+rovider "azurerm" {
+  features {}
+}

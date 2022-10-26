@@ -1,5 +1,5 @@
 resource "azurerm_resource_group" "aks_rg" {
-  name     = var.resource_group_name
+  name     = "${var.resource_group_name}-rg"
   location = var.location
 }
 
@@ -54,26 +54,11 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
     }
   }
 
-# RBAC and Azure AD Integration Block
-  role_based_access_control {
-    enabled = true
-    azure_active_directory {
-      managed = true
-      admin_group_object_ids = [azuread_group.aks_administrators.id]
-    }
-  }
-
-# Windows Profile
-  windows_profile {
-    admin_username = var.windows_admin_username
-    admin_password = var.windows_admin_password
-  }
-
 # Linux Profile
   linux_profile {
     admin_username = "ubuntu"
     ssh_key {
-      key_data = file(var.ssh_public_key)
+      key_data = var.ssh_public_key
     }
   }
 
