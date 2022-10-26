@@ -1,2 +1,2 @@
 # Azure-AKS-LZ-Demo
-This is a LZ Demo for Creating AKS Clusters
+This is an LZ Demo for Creating AKS Clusters
