@@ -13,6 +13,7 @@ module "aks_env" {
     nodepool_disk_size  = each.value.nodepool_disk_size
     vm_size             = each.value.vm_size
     ssh_public_key      = each.value.ssh_public_key
+    admin_username      = each.value.admin_username
 }
 
 locals {
@@ -26,7 +27,8 @@ locals {
             nodepool_max_count  = 1
             nodepool_disk_size  = 10
             vm_size             = "Standard_DS1_v2"
-            ssh_public_key      = ""
+            admin_username      = data.azurerm_key_vault_secret.aks_admin_username.value
+            ssh_public_key      = data.azurerm_key_vault_secret.aks_ssh.value
         },
         test = {
             availability_zones  = [1]
@@ -37,7 +39,8 @@ locals {
             nodepool_max_count  = 2
             nodepool_disk_size  = 30
             vm_size             = "Standard_DS2_v2"
-            ssh_public_key      = ""
+            admin_username      = data.azurerm_key_vault_secret.aks_admin_username.value
+            ssh_public_key      = data.azurerm_key_vault_secret.aks_ssh.value
         }
         staging = {
             availability_zones  = [1,2,3]
@@ -48,7 +51,9 @@ locals {
             nodepool_max_count  = 4
             nodepool_disk_size  = 100
             vm_size             = "Standard_DS3_v2"
-            ssh_public_key      = ""
+            admin_username      = data.azurerm_key_vault_secret.aks_admin_username.value
+            ssh_public_key      = data.azurerm_key_vault_secret.aks_ssh.value
         }
     }
 }
+

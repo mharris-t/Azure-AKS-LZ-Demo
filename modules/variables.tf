@@ -30,6 +30,12 @@ variable "enable_auto_scaling" {
   default = true
 }
 
+variable "admin_username" {
+  type = string
+  description = "Azure AKS Admin Username"
+  default = "admin"
+}
+
 variable "vnet_adress_space" {
   type = string
   description = "VNET Address Space for K8s Cluster"
