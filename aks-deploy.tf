@@ -24,7 +24,7 @@ locals {
             k8s_subnet          = "10.1.0.0/16"
             nodepool_min_count  = 1
             nodepool_max_count  = 1
-            nodepool_disk_size  = 30
+            nodepool_disk_size  = 10
             vm_size             = "Standard_DS1_v2"
             ssh_public_key      = ""
         },
@@ -46,7 +46,7 @@ locals {
             k8s_subnet          = "10.1.0.0/16"
             nodepool_min_count  = 1
             nodepool_max_count  = 4
-            nodepool_disk_size  = 30
+            nodepool_disk_size  = 100
             vm_size             = "Standard_DS3_v2"
             ssh_public_key      = ""
         }
