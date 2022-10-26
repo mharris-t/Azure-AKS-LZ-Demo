@@ -88,7 +88,6 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
   }
 }
 
-
 terraform {
   required_version = ">= 0.13"
   required_providers {
