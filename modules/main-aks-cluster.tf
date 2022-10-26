@@ -87,3 +87,8 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
     Environment = "${var.cluster_name}"
   }
 }
+
+
+terraform {
+  required_version = ">= 0.12"
+}
