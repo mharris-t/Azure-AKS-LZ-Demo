@@ -17,27 +17,26 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
   node_resource_group = "${azurerm_resource_group.aks_rg.name}-nrg"
 
   default_node_pool {
-    name                 = "systempool"
+    name                 = "${var.cluster_name}-nodepool"
     vm_size              = var.vm_size
     orchestrator_version = data.azurerm_kubernetes_service_versions.current.latest_version
-    availability_zones   = [1, 2, 3]
-    enable_auto_scaling  = true
+    availability_zones   = var.availability_zones
+    enable_auto_scaling  = var.enable_auto_scaling
     max_count            = var.nodepool_max_count
     min_count            = var.nodepool_min_count
     os_disk_size_gb      = var.nodepool_disk_size
     type                 = "VirtualMachineScaleSets"
-    vnet_subnet_id        = azurerm_subnet.aks-default.id 
+    vnet_subnet_id       = azurerm_subnet.aks-default.id 
     node_labels = {
       "nodepool-type"    = "system"
-      "environment"      = "dev"
-      "nodepoolos"       = "linux"
+      "environment"      = "${var.cluster_name}"
+      "nodepools"        = "linux"
       "app"              = "system-apps" 
     } 
    tags = {
       "nodepool-type"    = "system"
-      "environment"      = "dev"
-      "nodepoolos"       = "linux"
-      "app"              = "system-apps" 
+      "environment"      = "${var.cluster_name}"
+      "nodepools"        = "linux"
    } 
   }
 
@@ -85,6 +84,6 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
   }
 
   tags = {
-    Environment = "dev"
+    Environment = "${var.cluster_name}"
   }
 }

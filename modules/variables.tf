@@ -24,6 +24,24 @@ variable "availability_zones" {
   default = [1]
 }
 
+variable "enable_auto_scaling" {
+  type = bool
+  description = "Azure Availability Zones"
+  default = true
+}
+
+variable "vnet_adress_space" {
+  type = string
+  description = "VNET Address Space for K8s Cluster"
+  default = "10.0.0.0/8"
+}
+
+variable "k8s_subnet" {
+  type = string
+  description = "Subnet Address Space for K8s Cluster"
+  default = "10.0.10.0/16"
+}
+
 variable "nodepool_min_count" {
   type = number
   description = "Min count for node pool"
