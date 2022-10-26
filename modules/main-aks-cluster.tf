@@ -1,3 +1,5 @@
+#! Creates resource group and AKS Cluster within the resource group. 
+
 resource "azurerm_resource_group" "aks_rg" {
   name     = "${var.resource_group_name}-rg"
   location = var.location
@@ -8,6 +10,7 @@ data "azurerm_kubernetes_service_versions" "current" {
   include_preview = false
 }
 
+#! Deploys latest version of K8s cluster.
 resource "azurerm_kubernetes_cluster" "aks_cluster" {
   name                   = "${var.cluster_name}-cluster"
   location               = azurerm_resource_group.aks_rg.location
@@ -73,6 +76,7 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
   }
 }
 
+#! Required versions.
 terraform {
   required_version = ">= 0.13"
   required_providers {

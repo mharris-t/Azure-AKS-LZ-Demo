@@ -1,3 +1,4 @@
+#! Create Log Analytics Workspace
 resource "azurerm_log_analytics_workspace" "insights" {
   name                = "logs-${var.cluster_name}"
   location            = azurerm_resource_group.aks_rg.location

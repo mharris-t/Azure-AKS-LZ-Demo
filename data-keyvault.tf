@@ -1,3 +1,5 @@
+#! Reads values from a keyvault, already deployed and populated using a previous LZ.
+
 data "azurerm_key_vault" "keyvault" {
   name                = "lz-keyvault"
   resource_group_name = "governance_vault"

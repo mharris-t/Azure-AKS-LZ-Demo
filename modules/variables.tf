@@ -1,11 +1,11 @@
-# Azure Location
+#! Azure Location
 variable "location" {
   type = string
   description = "Azure Region"
   default = "West Europe"
 }
 
-# Azure Resource Group Name
+#! Azure Resource Group Name
 variable "resource_group_name" {
   type = string
   description = "Resource Group Name"

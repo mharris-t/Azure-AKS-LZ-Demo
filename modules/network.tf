@@ -1,4 +1,4 @@
-# Create Virtual Network
+#! Creates Virtual Network associated to the AKS Cluster.
 resource "azurerm_virtual_network" "k8s_vnet" {
   name                = "${var.cluster_name}-network"
   location            = azurerm_resource_group.aks_rg.location
@@ -6,7 +6,7 @@ resource "azurerm_virtual_network" "k8s_vnet" {
   address_space       = ["${var.vnet_address_space}"]
 }
 
-# Create a Subnet for AKS
+#! Creates a subnet for the VNET. 
 resource "azurerm_subnet" "k8s_subnet" {
   name                 = "${var.cluster_name}-subnet"
   virtual_network_name = azurerm_virtual_network.k8s_vnet.name

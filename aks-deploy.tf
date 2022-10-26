@@ -1,3 +1,4 @@
+#! Module used for deployment. It creates a resource group first and then deploys an AKS cluster along with networking resources.
 module "aks_env" {
     source              = "../modules/"
     for_each            = local.cluster_env
@@ -16,6 +17,8 @@ module "aks_env" {
     admin_username      = each.value.admin_username
 }
 
+
+#! Create clusters for different resource groups namely, dev; test; and ;qa. 
 locals {
     cluster_env = {
         dev = {
