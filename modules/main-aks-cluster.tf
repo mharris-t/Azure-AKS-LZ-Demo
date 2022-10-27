@@ -43,12 +43,11 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
    } 
   }
 
-# Identity (System Assigned or Service Principal)
+#! Identity (System Assigned or Service Principal)
   identity {
     type = "SystemAssigned"
   }
 
-# Add On Profiles
   addon_profile {
     azure_policy {enabled =  true}
     oms_agent {
@@ -57,7 +56,6 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
     }
   }
 
-# Linux Profile
   linux_profile {
     admin_username = var.admin_username
     ssh_key {
@@ -65,7 +63,6 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
     }
   }
 
-# Network Profile
   network_profile {
     network_plugin = "azure"
     load_balancer_sku = "Standard"
